@@ -1,6 +1,6 @@
 FROM ubuntu:focal
 
-ARG SRSRAN_VERSION=22_04
+ARG SRSRAN_VERSION=22_04_1
 
 ARG LIBZMQ_VERSION=4.3.4
 
@@ -16,6 +16,7 @@ RUN apt update && \
         wget \
         curl \
         vim \
+        ripgrep \
         iptables \
         iproute2 \
         iputils-ping \

@@ -14,6 +14,10 @@ This demo allows you to deploy an srsRAN installation within a Vagrant VM to sen
 
 docker build -t srsran .
 docker tag srsran shubhamtatvamasi/srsran-demo
+
+# Tag and push
+docker tag srsran shubhamtatvamasi/srsran-demo:$(uname -r)
+docker push shubhamtatvamasi/srsran-demo:$(uname -r)
 ```
 
 **Prerequisites**
@@ -137,7 +141,7 @@ docker_image | Depending on your processor you may have to rebuild docker image.
 
 ---
 
-With these values edited as needed, make sure to save the `hosts.yaml` file.
+With these values edited as needed, make sure to save the `hosts.yml` file.
 
 ### Deploy srsRAN
 
@@ -146,7 +150,8 @@ Now we can use Ansible to install Docker within the Vagrant VM, build the srsRAN
 Install Docker and srsRAN on the srsRAN Vagrant VM with Ansible:
 
 ```bash
-ansible-playbook install-everything.yaml
+ansible-playbook install-docker.yml
+ansible-playbook start-srsran.yml
 ```
 
 This should automatically start the process of connecting to your AGW with one of the UEs.
