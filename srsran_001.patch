@@ -1,0 +1,18 @@
+--- bounded_bitset.h	2022-10-24 19:17:56.747335865 +0000
++++ bounded_bitset.h.new	2022-10-24 19:17:43.591585916 +0000
+@@ -332,11 +332,15 @@
+                   "ERROR: operator&= called for bitsets of different sizes (%zd!=%zd)",
+                   size(),
+                   other.size());
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
++
+     for (size_t i = 0; i < nof_words_(); ++i) {
+       buffer[i] &= other.buffer[i];
+     }
+     return *this;
+   }
++#pragma GCC diagnostic pop
+ 
+   bounded_bitset<N, reversed> operator~() const noexcept
+   {

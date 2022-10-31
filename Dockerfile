@@ -48,6 +48,12 @@ RUN wget https://github.com/srsran/srsRAN/archive/refs/tags/release_${SRSRAN_VER
     unzip v${CZMQ_VERSION}.zip && \
     rm *.zip
 
+COPY srsran_001.patch /srsran/srsRAN-release_${SRSRAN_VERSION}/lib/include/srsran/adt/
+
+WORKDIR /srsran/srsRAN-release_${SRSRAN_VERSION}/lib/include/srsran/adt
+
+RUN patch bounded_bitset.h srsran_001.patch
+
 WORKDIR /srsran/libzmq-${LIBZMQ_VERSION}
 
 RUN ./autogen.sh && \
