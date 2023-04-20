@@ -52,7 +52,7 @@ COPY srsran_001.patch /srsran/srsRAN-release_${SRSRAN_VERSION}/lib/include/srsra
 
 WORKDIR /srsran/srsRAN-release_${SRSRAN_VERSION}/lib/include/srsran/adt
 
-RUN patch bounded_bitset.h srsran_001.patch
+# RUN patch bounded_bitset.h srsran_001.patch
 
 WORKDIR /srsran/libzmq-${LIBZMQ_VERSION}
 
@@ -70,7 +70,7 @@ RUN ./autogen.sh && \
     make install && \
     ldconfig
 
-WORKDIR /srsran/srsRAN-release_${SRSRAN_VERSION}/build
+WORKDIR /srsran/srsRAN_4G-release_${SRSRAN_VERSION}/build
 
 RUN cmake .. && \
     make && \
