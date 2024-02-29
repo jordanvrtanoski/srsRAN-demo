@@ -1,6 +1,6 @@
-FROM ubuntu:focal
+FROM ubuntu:jammy
 
-ARG SRSRAN_VERSION=22_04_1
+ARG SRSRAN_VERSION=23_04
 
 ARG LIBZMQ_VERSION=4.3.4
 
@@ -31,7 +31,7 @@ RUN apt update && \
         rapidjson-dev \
         colordiff \
         ninja-build \
-        clang-format-8 \
+        clang-format-14 \
         libtool-bin \
         autoconf \
         iperf3 \
@@ -40,7 +40,7 @@ RUN apt update && \
 
 WORKDIR /srsran
 
-RUN wget https://github.com/srsran/srsRAN/archive/refs/tags/release_${SRSRAN_VERSION}.zip && \
+RUN wget https://github.com/srsran/srsRAN_4G/archive/refs/tags/release_${SRSRAN_VERSION}.zip && \
     wget https://github.com/zeromq/libzmq/archive/refs/tags/v${LIBZMQ_VERSION}.zip && \
     wget https://github.com/zeromq/czmq/archive/refs/tags/v${CZMQ_VERSION}.zip && \
     unzip release_${SRSRAN_VERSION}.zip && \
